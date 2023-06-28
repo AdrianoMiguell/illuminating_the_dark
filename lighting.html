@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        body{
+            background-attachment: fixed;
+            background-clip: content-box;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 110vw;
+            height: 110vh;
+            transition: 1s;
+            overflow: hidden;
+        }
+
+        #iluminacao{
+            position: absolute;
+            width: 225px;
+            height: 225px;
+            border-radius: 100%;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+            /* Esse box shadow cria uma grande sombra ao redor do objeto, dando a impressão de escuridão. */
+            box-shadow: 0 0 500px 4000px rgba(0, 0, 0, 0.98),
+            0 0 80px 35px rgb(0, 0, 0) inset;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <div id="iluminacao"></div>
+
+    <script>
+
+        const iluminacao = document.getElementById("iluminacao");
+        const imagens = [
+            "https://images.pexels.com/photos/3608056/pexels-photo-3608056.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/1643403/pexels-photo-1643403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/414837/pexels-photo-414837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "https://images.pexels.com/photos/6136258/pexels-photo-6136258.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+
+        ]
+        let i = 0;
+
+        console.log(imagens[0]);
+
+        document.body.style.backgroundImage = `url(${imagens[i]})`;
+        
+        document.body.addEventListener("mousemove", (e) => {
+            
+            iluminacao.style.left = `${e.offsetX}px`
+            iluminacao.style.top = `${e.offsetY}px`
+            
+            console.log(e);
+        });
+        
+        setInterval(() => {
+            if(i > 3) {
+                i = 0;
+            }
+            document.body.style.backgroundImage = `url(${imagens[i]})`;
+            i++;
+        }, 15000);
+
+    </script>
+
+</body>
+</html>
